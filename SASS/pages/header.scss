@@ -1,0 +1,212 @@
+@import '../helper/map';
+@import '../helper/variables';
+@import '../helper/mixin';
+@import '../components/header-title';
+
+//! Header_nav-bar
+
+html {
+    overflow-x: hidden;
+}
+
+header {
+    width: 100vw;
+    height: 100vh;
+    background: url(../../Image/filter.png) no-repeat;
+    background-size: 100% 823px;
+    position: relative;
+    margin-bottom: 80px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .container {
+        height: 100%;
+        margin: 0 15%;
+    }
+    
+   
+}
+
+header .header_column {
+    display: flex;
+    flex-direction: column;
+}
+
+header .header_navbar {
+    width: 100%;
+    height: 8rem;
+    color: white;
+    
+    @include flex(space-between, center)
+}
+
+header .header_navbar .logo_name {
+    @include size_color($text-color, fs-sm, fw-lg);
+}
+
+header .header_navbar .nav_bar {
+    font-size: map-get($fonts, fs-xsm);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+header .header_navbar .nav_bar .nav_list ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 21px;
+}
+
+header .header_navbar .nav_bar .nav_list ul li a,
+header .header_navbar .nav_bar .nav_icon {
+    color: $second_text_color;
+    font-weight: 600;
+}
+
+header .header_navbar .nav_bar .nav_icon {
+    display: flex;
+    gap: 21px;
+    font-size: 18px;
+}
+
+header .header_navbar .nav_bar .nav_icon ion-icon,
+header .header_navbar .menu_toggle {
+    cursor: pointer;
+}
+
+header .container .header_navbar .menu_toggle {
+    position: absolute;
+    right: 60px;
+}
+
+//! Header_about
+header .container .header_about {
+    height: 100%;
+
+    @include flex(start, center);
+}
+
+header .container .header_about .header_content{
+    width: 683px;
+    
+    @include flex_colum(35px)
+}
+
+header .container .header_about .header_content h2 {
+    @include size_color($text-color, fs-lg, fw-Blg);
+}
+
+header .container .header_about .header_content p {
+    font-size: 20px;
+    @include size_color($second_text_color, $weight: fw-text-2);
+    letter-spacing: 2px;
+}
+
+header .container .header_about .header_content .total_btn {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+header .container .header_about .header_content .total_btn .btn1, 
+header .container .header_about .header_content .total_btn .btn2 {
+    font-size: map-get($fonts, fs-xsm);
+    font-weight: map-get($fonts, fw-lg);
+
+    border-top-left-radius: 37px;
+    border-bottom-left-radius: 37px;
+    border-top-right-radius: 37px;
+    border-bottom-right-radius: 37px;
+}
+
+header .container .header_about .header_content .total_btn .btn1 {
+    width: 187px;
+    height: 48px;
+    background-color: $primary;
+    color: $light_text_color;
+
+    @include flex(center,center)
+}
+header .container .header_about .header_content .total_btn .btn2 {
+    width: 157px;
+    height: 48px;
+    background-color: transparent;
+    color: #0D5C63;
+    border: 1px solid #0D5C63;
+
+    @include flex(center,center)
+}
+
+
+//! Media query for Mobile
+@media screen and (max-width: 750px) {
+    .container {
+        margin: 0 5%;
+    }
+
+    header .container .header_navbar .logo_name,
+    header .container .header_navbar .menu_toggle
+    {
+        z-index: 1000;
+    }
+
+    header .container .header_navbar .menu_toggle {
+        right: 3%;
+    }
+
+    .header_navbar  .nav_bar .nav_list  {
+        display: none; //! JS ile duzelmeli burass
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    
+    .header_navbar  .nav_bar .nav_list.active {
+        display: block;
+    }
+
+    header .header_navbar .nav_bar .nav_icon {
+        transform: translateX(-33px);
+    }
+
+    header .header_navbar .nav_bar .nav_list ul {
+        background-color: #F7F7F7;
+        height: 460px;
+        font-weight: 400;
+
+        display: flex;
+        flex-direction: column;
+        font-size: 30px;
+        gap: 30px;
+    }
+
+    //! Header about
+
+    header .container .header_about .header_content {
+        text-align: center;
+    }
+
+    header .container .header_about .header_content h2 {
+        font-size: map-get($fonts, fs-md);
+        font-weight: map-get($fonts, fw-lg );
+    }
+    
+    header .container .header_about .header_content p {
+        font-size: map-get($fonts, fs-mobile-sm);
+        font-weight: map-get($fonts, fw-text-2 );
+        letter-spacing: 0;
+    }
+
+    header .container .header_about .header_content .total_btn {
+        @include flex(center, center);
+        @include flex_colum();
+    }
+}

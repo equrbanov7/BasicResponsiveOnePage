@@ -1,0 +1,32 @@
+.header {
+    text-align: center;
+
+    @include flex(center, center);
+    @include flex_colum(10px);
+    flex-wrap: wrap;
+}
+
+ .header h3 {
+    color: $text-color;
+    font-size: map-get($fonts, fs-md);
+    font-weight: map-get($fonts, fw-lg);
+}
+
+ .header .header_text {
+    width: 50%;
+    text-align: center;
+    @include flex(center, center);
+}
+
+ .header .header_text p {
+    color: $second_text_color;
+    font-size: map-get($fonts, fs-xsm);
+    font-weight: map-get($fonts, fw-text-2);
+}
+
+.underline {
+    width: 100%;
+    width: 100%;
+    height: 2px;
+    background-color: #364067;
+}
